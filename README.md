@@ -55,6 +55,6 @@ To customize the app to load different region and different places follow the be
 
 - Finally delete the corresponding local storage data (i.e coordinates) in your browser.
 
-## Contributing
+## Contribution
 
 - Please check the CONTRIBUTING.md to know more about contributions.
