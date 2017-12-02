@@ -30,6 +30,11 @@ let desc = ko.observable();	// used to hold currently activated google map maker
 let placeAddress = ko.observable();	// used to hold currently activated google map maker's venue address
 let placeContact = ko.observable();	// used to hold currently activated google map maker's venue contact number
 
+// function to handle google maps api load error
+function googleMapLoadFail(status) {
+	alert("Error: Google Maps Api Not Loaded. Verify the corresponding script tag in index.html");
+}
+
 // function to initialize the google map
 function initMap() {
 	map = new google.maps.Map(document.getElementById("map"), {
@@ -256,7 +261,7 @@ function applyFilter(list) {
 }
 
 // knockout viewmodel
-const viewModel = function() {
+const ViewModel = function() {
 	const self = this;
 	self.filterList = ko.observableArray([]); // used to store place names that are to be shown in the sidebar
 
@@ -294,4 +299,4 @@ const viewModel = function() {
 	};
 }
 
-ko.applyBindings(new viewModel());
+ko.applyBindings(new ViewModel());
