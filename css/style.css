@@ -133,9 +133,34 @@ header {
 	transition: all 0.3s ease-in-out;
 }
 
+/*CSS for Loading Screen*/
+.hide_loader {
+	margin-left: 100vw;
+	transition: all 0.3s ease-in-out;
+}
+
+#loader {
+	z-index: 4;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	text-align: center;
+	background-color: #222;
+	transition: all 0.3s ease-in-out;
+}
+
+#loading {
+	margin: auto;
+	padding-top: 50vh;
+	color: white;
+	font-family: "philosopher", sans-serif;
+	transition: all 0.3s ease-in-out;
+}
 
 /*CSS for Infodesk Used to show place info*/
-.hide-infodesk {
+.hide_infodesk {
 	margin-left: 100vw;
 	transition: all 0.3s ease-in-out;
 }
@@ -166,15 +191,6 @@ header {
 	height: 100vh;
 	overflow-x: hidden;
 	overflow-y: scroll;
-}
-
-/*CSS for app assets loading*/
-#loading {
-	position: relative;
-	overflow-y: hidden !important;
-	top: 50vh;
-	font-family: "philosopher", sans-serif;
-	transition: all 0.3s ease-in-out;
 }
 
 #information h1 {
@@ -235,7 +251,7 @@ header {
 		font-size: 3vh;
 	}
 
-	.hide-sidebar {
+	.hide_sidebar {
 		margin-left: -100vw;
 		transition: all 0.3s ease-in-out;
 	}
@@ -271,6 +287,10 @@ header {
 		width: 15vw;
 	}
 
+	#loading {
+		padding-top: 50vw;
+	}
+
 	#information img {
 		width: 100vw;
 	}
@@ -302,7 +322,7 @@ header {
 		font-size: 4vh;
 	}
 
-	.hide-sidebar {
+	.hide_sidebar {
 		margin-left: -30vw;
 		transition: all 0.3s ease-in-out;
 	}
@@ -339,6 +359,10 @@ header {
 
 	#information img {
 		height: 70vh;
+	}
+
+	#loading {
+		padding-top: 50vh;
 	}
 
 	#map {

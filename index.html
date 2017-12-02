@@ -13,17 +13,17 @@
 	<!-- Header holds the title and link to open sidebar -->
 	<header id="main-title">
 		<div id="button-container">
-			<a href="#" class="hamburger" data-bind="click: toggle">&#9776</a>
-			<a href="#" class="close-btn hide" data-bind="click: toggle">&#10060</a>
+			<a href="#" class="hamburger" data-bind="click: toggle, css: { hide: sidebarStatus() }">&#9776</a>
+			<a href="#" class="close-btn hide" data-bind="click: toggle, css: { hide: !sidebarStatus() }">&#10060</a>
 		</div>
 		<h1 class="title">Singapore Hangouts</h1>
 	</header>
 
 	<!-- Sidebar contains the filter and the list of the place -->
-	<div id="sidebar" class="hide-sidebar">
+	<div id="sidebar" class="hide_sidebar" data-bind="css: { hide_sidebar: !sidebarStatus() }">
 		<div id="sidebar-contents">
 			<div id="filter">
-				<input type="text" class="input-filter" id="filterbox" name="filter" value="Filter..">
+				<input type="text" class="input-filter" id="filterbox" name="filter" data-bind="value: filterText">
 				<a href="#" class="arrow" id="arrow-filter" data-bind="click: filter">&#10132</a>
 			</div>
 			<div id="places-list">
@@ -37,12 +37,15 @@
 		</div>
 	</div>
 
+	<div id="loader" class="hide_loader" data-bind="css: { hide_loader: !loaderStatus() }">
+		<div id="loading"><h1>Please Wait...Loading Assets into Local Storage</h1></div>
+	</div>
+
 	<!-- Infodesk is used to displayy the info about the place -->
-	<div id="infodesk" class="hide-infodesk">
+	<div id="infodesk" class="hide_infodesk" data-bind="css: { hide_infodesk: !infoStatus() }">
 		<div class="close-btn-container">
 			<a href="#" class="info-close-btn" data-bind="click: closeMoreInfo">&#10060</a>
 		</div>
-		<div id="loading" class="hide"><h1>Please Wait...Loading Assets into Local Storage</h1></div>
 		<div id="information">
 			<h1 data-bind="text: placeName"></h1>
 			<img src="" alt="" data-bind="attr: {src: imgurl, alt: placeName}">
