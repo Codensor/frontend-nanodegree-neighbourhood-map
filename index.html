@@ -20,22 +20,24 @@
 	</header>
 
 	<!-- Sidebar contains the filter and the list of the place -->
-	<div id="sidebar" class="hide_sidebar" data-bind="css: { hide_sidebar: !sidebarStatus() }">
-		<div id="sidebar-contents">
-			<div id="filter">
-				<input type="text" class="input-filter" id="filterbox" name="filter" data-bind="value: filterText">
-				<a href="#" class="arrow" id="arrow-filter" data-bind="click: filter">&#10132</a>
-			</div>
-			<div id="places-list">
-				<ul data-bind="foreach: filterList">
-					<li data-bind="click: $root.loadInfoWindow"><a href="#" data-bind="text: name"></a></li>
-				</ul>
-			</div>
-			<div id="reset">
-				<button type="reset" name="reset-filter" value="reset" id="reset-btn" data-bind="click: reset">Reset</button>
+	<aside>
+		<div id="sidebar" class="hide_sidebar" data-bind="css: { hide_sidebar: !sidebarStatus() }">
+			<div id="sidebar-contents">
+				<div id="filter">
+					<input type="text" class="input-filter" id="filterbox" name="filter" data-bind="value: filterText">
+					<a href="#" class="arrow" id="arrow-filter" data-bind="click: filter">&#10132</a>
+				</div>
+				<div id="places-list">
+					<ul data-bind="foreach: filterList">
+						<li data-bind="click: $root.loadInfoWindow"><a href="#" data-bind="text: name"></a></li>
+					</ul>
+				</div>
+				<div id="reset">
+					<button type="reset" name="reset-filter" value="reset" id="reset-btn" data-bind="click: reset">Reset</button>
+				</div>
 			</div>
 		</div>
-	</div>
+	</aside>
 
 	<div id="loader" class="hide_loader" data-bind="css: { hide_loader: !loaderStatus() }">
 		<div id="loading"><h1>Please Wait...Loading Assets into Local Storage</h1></div>
@@ -57,9 +59,11 @@
 	</div>
 
 	<!-- Map container contains the google map -->
-	<section id="map-container">
-		<div id="map"></div>
-	</section>
+	<main>
+		<section id="map-container">
+			<div id="map"></div>
+		</section>
+	</main>
 
 	<script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js"></script> <!-- Knockout js script -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><!-- jquery script -->

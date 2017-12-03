@@ -121,6 +121,8 @@ function markerEvents() {
 				currentMarker = markers[i];
 				makeInfoWindow(currentMarker);
 				markers[i].setAnimation(google.maps.Animation.BOUNCE);
+		        map.setCenter(currentMarker.getPosition());
+
 			}
 			if (currentPointer === 1) {
 				currentPointer = 0;
@@ -128,6 +130,13 @@ function markerEvents() {
 			}
 		});
 	}
+	map.addListener('center_changed', function() {
+          // 3 seconds after the center of the map has changed, pan back to the
+          // marker.
+        window.setTimeout(function() {
+        	map.panTo(marker.getPosition());
+        }, 3000);
+    });
 }
 
 // function to create google maps infowindows
@@ -216,13 +225,9 @@ function setFilterList(list) {
 }
 
 // function to perform filtering of the list of places in the sidebar
-function applyFilter(list) {
-	infoWindow.close();
-	currentMarker.setAnimation(null);
-	currentMarker = null;
-	currentPointer = 0;
+function applyFilter(list, string) {
 	let tempArray = [];
-	let str = $("#filterbox").val();
+	let str = string;
 	for (let i = 0; i < list.filterList().length; i++) {
 		let state = list.filterList()[i].name.toLowerCase().includes(str);
 		if (state) {
@@ -271,7 +276,15 @@ let ViewModel = function() {
 
 	// function to load the filter functionality
 	self.filter = function() {
-		applyFilter(self);
+		if(infoWindow) {
+			infoWindow.close();
+		}
+		if(currentMarker) {
+			currentMarker.setAnimation(null);
+			currentMarker = null;
+		}
+		currentPointer = 0;
+		applyFilter(self, self.filterText());
 	};
 
 	// funtion to load infowindow when corresponding place is clicked in the sidebar list
